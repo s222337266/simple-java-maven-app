@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+    environment{
+        SONAR_TOKEN = "15771b5e67dfbcf6d6cf73049e646e1c14f9c464"
+    }
     stages {
         stage('Build') {
             steps {
@@ -19,7 +22,8 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 // Analyze the code using SonarQube
-                bat 'sonar-scanner'
+                //bat 'sonar-scanner'
+                bat "mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}"
             }
         }
         stage('Security Scan') {
