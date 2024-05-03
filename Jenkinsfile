@@ -26,7 +26,10 @@ pipeline {
             steps {
                 // Analyze the code using SonarQube
                 // bat 'sonar-scanner'
-                bat "mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}"
+                withSonarQubeEnv(installationName : 'sq1'){
+                    // bat "mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}"
+                    bat './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar'
+                }                
             }
         }
         stage('Security Scan') {
