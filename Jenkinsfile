@@ -13,17 +13,17 @@ pipeline {
         }
         stage('Unit and Integration Tests') {
             steps {
-                // Run unit tests
+                echo "Run unit tests..."
                 bat 'mvn test'
-                // Run integration tests
+                echo "Run integration tests..."
                 bat 'mvn integration-test'
             }
         }
         stage('Code Analysis') {
             steps {
                 // Analyze the code using SonarQube
-                //bat 'sonar-scanner'
-                bat "mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}"
+                bat 'sonar-scanner'
+                // bat "mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}"
             }
         }
         stage('Security Scan') {
