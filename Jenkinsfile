@@ -22,8 +22,8 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 // Analyze the code using SonarQube
-                bat 'sonar-scanner'
-                // bat "mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}"
+                // bat 'sonar-scanner'
+                bat "mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}"
             }
         }
         stage('Security Scan') {
