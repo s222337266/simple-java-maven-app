@@ -28,7 +28,8 @@ pipeline {
                 // bat 'sonar-scanner'
                 withSonarQubeEnv(installationName : 'sq1'){
                     // bat "mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}"
-                    bat 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar'
+                    bat "mvn sonar:sonar"
+                    // bat 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar'
                 }                
             }
         }
