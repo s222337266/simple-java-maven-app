@@ -5,7 +5,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Build the code using Maven.."
-                sh "($pwd).path"
                 sh "mvn clean package"
             }
         }
