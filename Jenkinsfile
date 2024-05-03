@@ -20,6 +20,9 @@ pipeline {
             }
         }
         stage('Code Analysis') {
+            tools {
+                jdk "jdk17" // the name you have given the JDK installation using the JDK manager (Global Tool Configuration)
+            }
             steps {
                 // Analyze the code using SonarQube
                 // bat 'sonar-scanner'
