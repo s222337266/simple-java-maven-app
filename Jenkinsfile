@@ -1,7 +1,18 @@
 pipeline {
     agent any
-    
+
     stages {
+        stage('Print Environment Variables') {
+            steps {
+                script {
+                    // Print all environment variables
+                    env.each { key, value ->
+                        echo "${key}=${value}"
+                    }
+                }
+            }
+        }
+        
         stage('Build') {
             steps {
                 echo "Build the code using Maven.."
